@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src *;">
+    <title>fisio</title>
+    <link rel="stylesheet" href="./photon-0.1.2-alpha/dist/css/photon.min.css">
+    <link rel="stylesheet" href="./estilo/inicio.css">
+</head>
+
+<body>
+    <div class="window">
+        <header class="toolbar toolbar-header">
+            <h1 class="title">principal</h1>
+        </header>
+        <div class="window-content">
+            <form id="inicio">
+                <div class="inicio_secion">
+                    <h5>usuario</h5>
+                    <input type="text" name="usuario" id="usuario" placeholder="Ingrese su usuario" maxlength="30">
+                    <h5>contraseña</h5>
+                    <input type="password" name="contraseña" id="contraseña" placeholder="Ingrese su contraseña" maxlength="30">
+                    <br>
+                    <button type="button" id="iniciar">Iniciar Sesión</button>
+                    <button type="reset" id="limpiar">Limpiar</button>
+                </div>
+            </form>
+            <div>
+                <div id="logo-container">
+                    <img src="./imagen/logo.png" alt="logotipo de la empresa" class="logo" height="200px"
+                        width="200px">
+                </div>
+            </div>
+        </div>
+        <footer class="toolbar toolbar-footer">
+            <h1 class="title">clinica fisio</h1>
+        </footer>
+    </div>
+    <script src="./functionMain.js"></script>
+</body>
+
+</html>

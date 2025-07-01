@@ -1,0 +1,77 @@
+#inicio {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+#inicio h5 {
+  margin-bottom: 5px;
+}
+
+#inicio input[type="text"],
+#inicio input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#inicio button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#inicio button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+}
+
+#inicio button[type="submit"]:active {
+  background-color: #0056b3;
+}
+
+#inicio button[type="reset"] {
+  background-color: #6c757d;
+  color: white;
+}
+
+#inicio button[type="reset"]:active {
+  background-color: #495057;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-left: 50vh; /* Centra horizontalmente */
+  border-radius: 30%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  height: 200px; /* Ajusta según el tamaño del logo */
+  width: 200px;  /* Ajusta según el tamaño del logo */
+}
+
+#logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Cambia min-height por height */
+}
+
+.window-content {
+  width: 100%; /* Cambia 100vw por 100% */
+  box-sizing: border-box;
+}
+
+#iniciar {
+  background-color: #007bff;
+  color: white;
+}
+
+#iniciar:active {
+  background-color: #0056b3;
+}

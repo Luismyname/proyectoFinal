@@ -20,7 +20,7 @@ let comprobar = (usua, pass, encontrado) => {
         contraseña = element.password
     })
     if (correo === usua && contraseña === pass) {
-        BrowserWindow.getFocusedWindow().loadFile('principal.html');
+        BrowserWindow.getFocusedWindow().loadFile('admin.html');
     } else {
         document.getElementById('logo-container').innerHTML = `<div><h1>Usuario o contraseña incorrectos</h1></div>`;
     }
@@ -44,4 +44,10 @@ iniciar.addEventListener('click', () => {
 limpiar.addEventListener('click', () => {
     usuario.value = ''
     contraseña.value = ''
+})
+
+contraseña.addEventListener('keyup', (e) => {
+    if (e.key === 'Enter') {
+        iniciar.click()
+    }
 })

@@ -22,7 +22,12 @@ let usuarioSchema = new mongoose.Schema({
     password:{
         type: String,
         required: true
-    }
+    },
+    role:{
+        type: String,
+        require: true,
+        enum: ['admin', 'employee', 'client']
+    },
 })
 
 let usuario = mongoose.model('usuario', usuarioSchema)

@@ -8,20 +8,18 @@ let iniciar = document.getElementById('iniciar')
 let limpiar = document.getElementById('limpiar')
 
 let comprobar = (usua, pass, encontrado) => {
-    let correo
-    let contraseña
-
     if (!Array.isArray(encontrado) || encontrado.length === 0) {
         document.getElementById('logo-container').innerHTML = '<div><h1>No se encontraron directores o hubo un error.</h1></div>';
         return;
     }
-    encontrado.forEach(element => {
-        correo = element.email
-        contraseña = element.password
-    })
-    if (correo === usua && contraseña === pass) {
+
+    const usuario = encontrado[0]; // 👈 tomamos directamente el primer (y único) elemento
+
+    if (usuario.email === usua && usuario.password === pass && usuario.role === 'admin') {
         BrowserWindow.getFocusedWindow().loadFile('admin.html');
-    } else {
+    }else if (usuario.email === usua && usuario.password === pass && usuario.role === 'user') {
+        BrowserWindow.getFocusedWindow().loadFile('user.html');
+    }else {
         document.getElementById('logo-container').innerHTML = `<div><h1>Usuario o contraseña incorrectos</h1></div>`;
     }
 }

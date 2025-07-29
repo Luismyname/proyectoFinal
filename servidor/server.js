@@ -79,6 +79,16 @@ app.get('/users0/:id', (req, res)=>{
         })
 })
 
+//busqueda de role
+app.get('/users4/:role', (req, res)=>{
+    usuario.find({role: {$regex: req.params.role}})
+        .then(result =>{
+            res.send(result)
+        }).catch(error =>{
+            res.send('No hay usuarios con este rol')
+        })
+})
+
 app.post('/users', async (req, res)=>{
     try{
         let nuevoUsuario = new usuario(req.body)

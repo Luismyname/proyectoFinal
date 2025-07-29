@@ -6,15 +6,8 @@ let winContent = document.getElementsByClassName('window-content')[0]; // Conten
 let empleadoP = document.getElementById('empleado-principal'); // Botón o elemento para mostrar empleados
 let AllEmplados = []
 
-
-empleadoP.addEventListener('click', () => {
-    // Elimina el div anterior si existe
-    const oldResultado = document.getElementById('resultado');
-    if (oldResultado) {
-        oldResultado.remove();
-    }
-
-    let contenido = document.createElement('div');
+//funcion para mostrar personas
+function mostrarPersonas(role, contenido) {
     fetch(recurso + '/users')
         .then(res => res.json())
         .then(json => {
@@ -22,6 +15,7 @@ empleadoP.addEventListener('click', () => {
 
             let listaE = '';
             for (let empleado of AllEmplados) {
+                if (empleado.role !== role) continue; //muestra solo el rol que queremos ver
                 listaE += `<li class="list-group-item">
                         <img>
                         <div class="media-body">
@@ -59,6 +53,20 @@ empleadoP.addEventListener('click', () => {
                 });
             });
         });
+    }
+
+empleadoP.addEventListener('click', () => {
+    // Elimina el div anterior si existe
+    const oldResultado = document.getElementById('resultado');
+    if (oldResultado) {
+        oldResultado.remove();
+    }
+
+    let contenido = document.createElement('div');
+
+    mostrarPersonas('employee', contenido); // Muestra empleados al hacer clic en el botón
+
+    
 });
 
 //cambio de pagina para ver a todos los empleados
@@ -89,7 +97,19 @@ function contarEmpleados() {
 
 contarEmpleados(); // Llamada inicial para contar empleados al cargar el script
 
-//buscar empleados
+//buscar clientes
+
+let clientesP = document.getElementById('cliente-principal');
+
+clientesP.addEventListener('click', () => {
+    // Elimina el div anterior si existe
+    const oldResultado = document.getElementById('resultado');
+    if (oldResultado) {
+        oldResultado.remove();
+    }
+    let contenido = document.createElement('div');
+    mostrarPersonas('client', contenido); // Muestra clientes al hacer clic en el botón
+});
 
 //conteo de clientes
 let numClientes = document.getElementById('num-clientes');
@@ -111,3 +131,12 @@ function contarClientes(){
 
 contarClientes(); // Llamada inicial para contar clientes al cargar el script
 
+//funcion de pagina principal 
+let paginaPrincipal = document.getElementById('pagina-principal');
+
+paginaPrincipal.addEventListener('click', () => {
+    const oldResultado = document.getElementById('resultado');
+    if (oldResultado) {
+        oldResultado.remove();
+    }
+});

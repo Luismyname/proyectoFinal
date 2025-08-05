@@ -4,6 +4,9 @@ const recurso = 'http://127.0.0.1:8080'
 
 let winContent = document.getElementsByClassName('window-content')[0]; // Contenedor principal de la ventana
 let empleadoP = document.getElementById('empleado-principal'); // Botón o elemento para mostrar empleados
+let viewempleados = document.getElementById('vista-empleados')
+let clienteV = document.getElementById('vista-clientes'); // Botón o elemento para mostrar clientes
+let viewClientes = document.getElementById('cliente-principal')
 let AllEmplados = []
 
 //funcion para mostrar personas
@@ -55,7 +58,8 @@ function mostrarPersonas(role, contenido) {
         });
     }
 
-empleadoP.addEventListener('click', () => {
+    
+viewempleados.addEventListener('click', () => {
     // Elimina el div anterior si existe
     const oldResultado = document.getElementById('resultado');
     if (oldResultado) {
@@ -70,9 +74,9 @@ empleadoP.addEventListener('click', () => {
 });
 
 //cambio de pagina para ver a todos los empleados
-let viewempleados = document.getElementById('vista-empleados')
 
-viewempleados.addEventListener('click', () => {
+
+empleadoP.addEventListener('click', () => {
     BrowserWindow.getFocusedWindow().loadFile('empleados.html');
 });
 
@@ -97,11 +101,14 @@ function contarEmpleados() {
 
 contarEmpleados(); // Llamada inicial para contar empleados al cargar el script
 
-//buscar clientes
+//manejo con clientes
 
-let clientesP = document.getElementById('cliente-principal');
+//navegacion a paginas de clientes
+viewClientes.addEventListener('click',()=>{
+    BrowserWindow.getFocusedWindow().loadFile('clientes.html');
+});
 
-clientesP.addEventListener('click', () => {
+clienteV.addEventListener('click', () => {
     // Elimina el div anterior si existe
     const oldResultado = document.getElementById('resultado');
     if (oldResultado) {
@@ -140,3 +147,28 @@ paginaPrincipal.addEventListener('click', () => {
         oldResultado.remove();
     }
 });
+
+let calendarioP = document.getElementById('calendario-principal')
+
+calendarioP.addEventListener('click', ()=>{
+    BrowserWindow.getFocusedWindow().loadFile('calendario.html')
+})
+
+
+let pagosP = document.getElementById('pagos-principal')
+
+pagosP.addEventListener('click', () => {
+    BrowserWindow.getFocusedWindow().loadFile('pagos.html');
+});
+
+let empleadosP = document.getElementById('empleado-principal')
+
+empleadoP.addEventListener('click', ()=>{
+    BrowserWindow.getFocusedWindow().loadFile('empleados.html');
+})
+
+let clientesP = document.getElementById('cliente-principal')
+
+clientesP.addEventListener('click', ()=>{
+    BrowserWindow.getFocusedWindow().loadFile('clientes.html');
+})

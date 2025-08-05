@@ -10,17 +10,18 @@ paginaPrincipal.addEventListener('click', () => {
     BrowserWindow.getFocusedWindow().loadFile('admin.html');
 });
 
-let clienteP = document.getElementById('cliente-principal')
-
-clienteP.addEventListener('click', ()=>{
-    BrowserWindow.getFocusedWindow().loadFile('clientes.html')
-})
-
 let calendarioP = document.getElementById('calendario-principal')
 
 calendarioP.addEventListener('click', ()=>{
     BrowserWindow.getFocusedWindow().loadFile('calendario.html')
 })
+
+let empleadoP = document.getElementById('empleado-principal');
+
+empleadoP.addEventListener('click', () => {
+    BrowserWindow.getFocusedWindow().loadFile('empleados.html');
+});
+
 
 let pagosP = document.getElementById('pagos-principal')
 

@@ -63,9 +63,10 @@ nav {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
-#pagina-principal{
+#empleado-principal{
     background-color: rgb(0, 174, 255);
     border: 2px solid #0000002f;
     border-radius: 5px;
     box-shadow: inset 4px 4px 8px #0000004f;
+
 }

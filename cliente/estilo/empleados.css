@@ -1,72 +1,132 @@
+/* Estilos para el menú de navegación lateral */
 nav {
-    background-color: #f0f0f0;
-    padding: 20px;
-    border-radius: 5px;
+  position: sticky;
+  top: 0;
+  height: fit-content;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 5px;
+  z-index: 10;
+  /* Asegura que esté por encima del contenido desplazable */
+  height: 100vh;
+  width: 23.5vw;
 }
 
-#contenedor{
-    display: grid;
-    margin: 10px;
-    grid-template-columns: 1fr 1fr;
+/* Área que puede tener mucho contenido y necesita desplazamiento vertical */
+#desplazar {
+  height: 100vh;
+  /* Límite máximo de altura visible del contenedor */
+  width: 100vw;
 }
 
+#form-control {
+  margin-left: 35vw;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+
+/* Contenedor interno con disposición en rejilla (grid) */
+#contenedor {
+  display: grid;
+  /* Activamos el sistema de rejilla */
+  margin: 10px;
+  /* Separación externa respecto a otros elementos */
+  grid-template-columns: repeat(3, 1fr);
+  /* Dos columnas de igual tamaño */
+}
+
+/* Tarjetas de vista individuales (Empleados, Clientes, etc.) */
 .mvistas {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin: 10px;
+  display: flex;
+  /* Activamos flexbox para alinear contenido verticalmente */
+  flex-direction: column;
+  /* Alineamos los elementos de arriba hacia abajo */
+  align-items: center;
+  /* Centrado horizontal del contenido */
+  justify-content: center;
+  /* Centrado vertical */
+  background-color: #ffffff;
+  /* Fondo blanco para cada tarjeta */
+  padding: 20px;
+  /* Espaciado interno */
+  border-radius: 10px;
+  /* Bordes redondeados más notorios que el nav */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  /* Sombra ligera para profundidad */
+  margin: 10px;
+  /* Espaciado entre tarjetas */
+  cursor: pointer;
+  /* Cambia el cursor para indicar interactividad */
+  transition: all 0.2s ease-in-out;
+  /* Suaviza las animaciones al interactuar */
 }
 
-.mvistas {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin: 10px;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-}
-
-/* Cambios visuales al pasar el ratón */
+/* Efecto al pasar el cursor por encima de una tarjeta */
 .mvistas:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* Sombra más intensa */
+  transform: translateY(-2px);
+  /* Eleva visualmente el componente */
 }
 
-/* Efecto de clic */
+/* Efecto al hacer clic en una tarjeta */
 .mvistas:active {
-    transform: translateY(1px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  transform: translateY(1px);
+  /* Simula una “presión” hacia abajo */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  /* Sombra un poco más suave */
 }
 
+/* Scroll en otro contenedor llamado #resultado (por si lo usas en otra vista) */
 #resultado {
-    max-height: 480px; /* o la altura que prefieras */
-    overflow-y: auto;
+  max-height: 480px;
+  /* Altura máxima visible del contenido */
+  overflow-y: auto;
+  /* Scroll vertical si el contenido lo supera */
 }
 
-.nav-group-item:hover{
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transform: translateY(-2px);
+/* Efectos visuales para el menú de navegación lateral */
+.nav-group-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* Sombra más profunda */
+  transform: translateY(-2px);
+  /* Eleva el ítem al pasar el cursor */
 }
 
-.nav-group-item:hover{
-    transform: translateY(1px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+.nav-group-item:hover {
+  transform: translateY(1px);
+  /* Clic visual en el ítem */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  /* Sombra más suave */
 }
 
-#empleado-principal{
-    background-color: rgb(0, 174, 255);
-    border: 2px solid #0000002f;
-    border-radius: 5px;
-    box-shadow: inset 4px 4px 8px #0000004f;
+/* Estilo especial para la opción "empleado-principal" */
+#empleado-principal {
+  background-color: rgb(0, 174, 255);
+  /* Color destacado */
+  border: 2px solid #0000002f;
+  /* Borde sutil */
+  border-radius: 5px;
+  /* Bordes redondeados */
+  box-shadow: inset 4px 4px 8px #0000004f;
+  /* Sombra interna tipo “botón” */
+}
 
+/* Estilos para el logo */
+.logo {
+  display: flex;
+  /* Usamos flexbox */
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  /* Lo convertimos en círculo */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  /* Sombra suave */
+  transition: transform 0.3s ease;
+  /* Suaviza cualquier transformación */
+  height: 100px;
+  /* Tamaño vertical fijo */
+  width: 100px;
+  /* Tamaño horizontal fijo */
 }

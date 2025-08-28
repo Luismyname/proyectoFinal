@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self';">
-    <title>clientes</title>
+    <title>Document</title>
     <link rel="stylesheet" href="./photon-0.1.2-alpha/dist/css/photon.min.css">
-    <link rel="stylesheet" href="./estilo/clientes.css">
+    <link rel="stylesheet" href="./estilo/seccion.css">
 </head>
 
 <body>
@@ -24,10 +24,6 @@
                     <span class="icon icon-home"></span>
                     Pagina principal
                 </span>
-                <span class="nav-group-item" id="empleado-principal">
-                    <span class="icon icon-user"></span>
-                    Empleados
-                </span> 
                 <span class="nav-group-item" id="cliente-principal">
                     <span class="icon icon-users"></span>
                     Clientes
@@ -42,10 +38,25 @@
                 </span>
             </nav>
 
-            <div id="desplazar">
-                <div id="contenedor">
+            <div id="contenedor">
+                <div class="mvistas" id="vista-clientes">
+                    <span class="icon icon-users"></span>
+                    <h3>Clientes</h3>
+                    <p id="num-clientes">Número de clientes:</p>
+                </div>
+                <div class="mvistas">
+                    <span class="icon icon-calendar"></span>
+                    <h3>Calendario</h3>
+                    <p id="num-clientes">Citas programadas</p>
+                </div>
+                <div class="mvistas">
+                    <span class="icon icon-credit-card"></span>
+                    <h3>Pagos</h3>
+                    <p id="num-clientes">Pagos</p>
                 </div>
             </div>
+
+
 
         </div>
         <footer class="toolbar toolbar-footer">
@@ -55,7 +66,7 @@
         </footer>
 
     </div>
-    <script src="clientes.js"></script>
+    <script src="admin.js"></script>
 </body>
 
 </html>

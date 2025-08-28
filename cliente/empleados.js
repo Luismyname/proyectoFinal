@@ -27,3 +27,26 @@ let pagosP = document.getElementById('pagos-principal')
 pagosP.addEventListener('click', () => {
     BrowserWindow.getFocusedWindow().loadFile('pagos.html');
 });
+
+let AllEmpleados = []
+
+function MostrarEmpleados(){
+    fetch(recurso + '/users4/'+'employee')
+    .then(res => res.json())
+    .then(json => {
+        AllEmpleados = json;
+        let lista = ''
+        AllEmpleados.forEach(empleado => {
+            empleado.date_ini = new Date(empleado.date_ini);
+            lista += `<div class="mvistas" id="vista-empleados">
+                        <img src="./imagen/${empleado.id}.png" class="logo" />
+                        <h3>Empleado: ${empleado.name}</h3>
+                        <p>Fecha de inicio: ${empleado.date_ini.getDate()}/${empleado.date_ini.getMonth() + 1}/${empleado.date_ini.getFullYear()} </p>
+                        <p>Email: ${empleado.email} </p>
+                    </div>`
+        })
+        document.getElementById('contenedor').innerHTML = lista;
+    })
+}
+
+MostrarEmpleados();

@@ -5,7 +5,7 @@
         "date_ini": "10/05/1993",
         "email": "pruebasupersu@info.es",
         "password": "Qwerty123+",
-        "role": "admin"
+        "role": ["admin"]
     },
     {
         "id": 1,
@@ -13,7 +13,7 @@
         "date_ini": "10/05/1993",
         "email": "admin",
         "password": "admin",
-        "role": "admin"
+        "role": ["admin"]
     },
     {
         "id": 2,
@@ -21,7 +21,15 @@
         "date_ini": "04/08/2000",
         "email": "Aaron@gmail.es",
         "password": "prueba",
-        "role": "employee"
+        "role": ["employee"]
+    },
+     {
+        "id": 3,
+        "name": "Mario",
+        "date_ini": "04/08/2002",
+        "email": "Mario@gmail.es",
+        "password": "prueba",
+        "role": ["employee", "client"]
     }
 
 ]

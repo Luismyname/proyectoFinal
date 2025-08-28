@@ -28,3 +28,24 @@ let pagosP = document.getElementById('pagos-principal')
 pagosP.addEventListener('click', () => {
     BrowserWindow.getFocusedWindow().loadFile('pagos.html');
 });
+
+let AllClientes = []
+
+function MostrarClientes(){
+    fetch(recurso + '/users4/'+'client')
+    .then(res => res.json())
+    .then(json => {
+        AllClientes = json;
+        let lista = ''
+        AllClientes.forEach(cliente => {
+            lista += `<div class="mvistas" id="vista-empleados">
+                        <img src="./imagen/${cliente.id}.png" class="logo" />
+                        <h3>Cliente: ${cliente.name}</h3>
+                        <p>Email: ${cliente.email} </p>
+                    </div>`
+        })
+        document.getElementById('contenedor').innerHTML = lista;
+    })
+}
+
+MostrarClientes();

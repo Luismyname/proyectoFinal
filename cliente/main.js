@@ -12,8 +12,8 @@ function createWindow(){
     mainWindow = new electron.BrowserWindow({
         width: 900,              // Ancho de la ventana
         height: 600,             // Alto de la ventana
-        resizable: false,        // No permite redimensionar la ventana
-        maximizable: false,      // No permite maximizar la ventana
+        //resizable: false,        // No permite redimensionar la ventana
+        //maximizable: false,      // No permite maximizar la ventana
         webPreferences: {
             nodeIntegration: true,    // Permite usar Node.js en el renderer (no recomendado para producción)
             contextIsolation: false,  // Desactiva el aislamiento de contexto (no recomendado para producción)
@@ -32,7 +32,7 @@ function createWindow(){
     });
 
     // Abre las herramientas de desarrollo de Chromium (DevTools)
-    //mainWindow.webContents.openDevTools()
+    mainWindow.webContents.openDevTools()
 }
 
 // Evento que se dispara cuando Electron ha terminado de inicializarse y está listo para crear ventanas

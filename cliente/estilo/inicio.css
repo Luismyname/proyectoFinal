@@ -43,11 +43,11 @@
 }
 
 .logo {
-  display: flex;
-  justify-content: center;
+  /*display: flex;*/
+  /*justify-content: center;*/
   align-items: center;
   margin: 0 auto;
-  margin-left: 50vh; /* Centra horizontalmente */
+  margin-left: 35vw; /* Centra horizontalmente */
   border-radius: 30%;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;

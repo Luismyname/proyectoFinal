@@ -18,7 +18,7 @@ function mostrarPersonas(role, contenido) {
 
             let listaE = '';
             for (let empleado of AllEmplados) {
-                if (empleado.role !== role) continue; //muestra solo el rol que queremos ver
+                if (!empleado.role.includes(role)) continue; //muestra solo el rol que queremos ver
                 listaE += `<li class="list-group-item">
                         <img>
                         <div class="media-body">
@@ -29,6 +29,7 @@ function mostrarPersonas(role, contenido) {
             }
 
             contenido.innerHTML = `
+            <div id="desplazar">
                 <div id="resultado">
                     <ul class="list-group">
                         <li class="list-group-header">
@@ -37,6 +38,7 @@ function mostrarPersonas(role, contenido) {
                         ${listaE}
                     </ul>
                 </div>
+            </div>
             `;
             winContent.appendChild(contenido);
             
@@ -61,7 +63,7 @@ function mostrarPersonas(role, contenido) {
     
 viewempleados.addEventListener('click', () => {
     // Elimina el div anterior si existe
-    const oldResultado = document.getElementById('resultado');
+    const oldResultado = document.getElementById('desplazar');
     if (oldResultado) {
         oldResultado.remove();
     }
@@ -91,7 +93,7 @@ function contarEmpleados() {
         .then(json => {AllEmplados = json
 
         for (let empleado of AllEmplados) {
-            if (empleado.role === 'employee') {
+            if (empleado.role.includes('employee')) {
                 conteoEmpleados++;
             }
         }
@@ -110,7 +112,7 @@ viewClientes.addEventListener('click',()=>{
 
 clienteV.addEventListener('click', () => {
     // Elimina el div anterior si existe
-    const oldResultado = document.getElementById('resultado');
+    const oldResultado = document.getElementById('desplazar');
     if (oldResultado) {
         oldResultado.remove();
     }
@@ -128,7 +130,7 @@ function contarClientes(){
         .then(res => res.json())
         .then(json => {AllEmplados = json
             for(let personas of AllEmplados){
-                if(personas.role === 'client'){
+                if(personas.role.includes('client')){
                     conteoClientes++;
                 }
             }
@@ -141,8 +143,10 @@ contarClientes(); // Llamada inicial para contar clientes al cargar el script
 //funcion de pagina principal 
 let paginaPrincipal = document.getElementById('pagina-principal');
 
+/*al darle click al boton principal, eliminara todas las busquedas activas del
+lado derecho de la pantalla, dando lugar a una vista como la pagina principal*/
 paginaPrincipal.addEventListener('click', () => {
-    const oldResultado = document.getElementById('resultado');
+    const oldResultado = document.getElementById('desplazar');
     if (oldResultado) {
         oldResultado.remove();
     }

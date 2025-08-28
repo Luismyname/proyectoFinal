@@ -15,10 +15,10 @@ let comprobar = (usua, pass, encontrado) => {
 
     const usuario = encontrado[0]; // 👈 tomamos directamente el primer (y único) elemento
 
-    if (usuario.email === usua && usuario.password === pass && usuario.role === 'admin') {
+    if (usuario.email === usua && usuario.password === pass && usuario.role.includes('admin')) {
         BrowserWindow.getFocusedWindow().loadFile('admin.html');
-    }else if (usuario.email === usua && usuario.password === pass && usuario.role === 'user') {
-        BrowserWindow.getFocusedWindow().loadFile('user.html');
+    }else if (usuario.email === usua && usuario.password === pass && usuario.role.includes('employee')) {
+        BrowserWindow.getFocusedWindow().loadFile('employee.html');
     }else {
         document.getElementById('logo-container').innerHTML = `<div><h1>Usuario o contraseña incorrectos</h1></div>`;
     }

@@ -24,7 +24,7 @@ let usuarioSchema = new mongoose.Schema({
         required: true
     },
     role:{
-        type: String,
+        type: [String],
         require: true,
         enum: ['admin', 'employee', 'client']
     },

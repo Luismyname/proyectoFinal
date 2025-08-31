@@ -16,6 +16,12 @@ calendarioP.addEventListener('click', ()=>{
     BrowserWindow.getFocusedWindow().loadFile('calendario.html')
 })
 
+let clienteP = document.getElementById('cliente-principal')
+
+clienteP.addEventListener('click', ()=>{
+    BrowserWindow.getFocusedWindow().loadFile('clientes.html')
+})
+
 let empleadoP = document.getElementById('empleado-principal');
 
 empleadoP.addEventListener('click', () => {

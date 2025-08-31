@@ -28,6 +28,12 @@ pagosP.addEventListener('click', () => {
     BrowserWindow.getFocusedWindow().loadFile('pagos.html');
 });
 
+let empleadoP = document.getElementById('empleado-principal');
+
+empleadoP.addEventListener('click', () => {
+    BrowserWindow.getFocusedWindow().loadFile('empleados.html');
+});
+
 let AllEmpleados = []
 
 function MostrarEmpleados(){
@@ -50,3 +56,34 @@ function MostrarEmpleados(){
 }
 
 MostrarEmpleados();
+
+//agregar empleados
+
+let nuevoEmpleado = document.getElementById('nuevo-empleado')
+let desplazar = document.getElementById('desplazar')
+
+nuevoEmpleado.addEventListener('click', ()=>{
+    desplazar.innerHTML = `
+    <form>
+        <fieldset>
+            <legend>Informacion de empleado</legend>
+            <label for="name">Nombre completo:
+                <input type="text" id="name" name="name">
+            </label>
+            <br/>
+            <label for="password">Contraseña:
+            <input type="password" id="password" name="password">
+            </label>
+            <br/>
+            <label for="date_ini">Fecha de inicio:
+            <input type="date" id="date_ini" name="date_ini">
+            </label>
+            <br/>
+            <label for="email">Email:
+            <input type="email" id="email" name="email" maxlength="40">
+            </label>
+            <br/>
+        </fieldset>
+    </form>
+        `
+})

@@ -1,35 +1,59 @@
 [
     {
-        "id": 0,
+        "_id": 0,
         "name": "luis Rodriguez",
+        "lastname": "Rodriguez",
+        "phone": "555-0001",
+        "direction": "Calle Falsa 123",
+        "birthday": "10/05/1993",
         "date_ini": "10/05/1993",
         "email": "pruebasupersu@info.es",
         "password": "Qwerty123+",
-        "role": ["admin"]
+        "role": ["admin"],
+        "specialitation": ["pediatrica"],
+        "EAN": "1234567890123"
     },
     {
-        "id": 1,
+        "_id": 1,
         "name": "admin",
+        "lastname": "admin",
+        "phone": "555-0000",
+        "direction": "Calle Admin 123",
+        "birthday": "01/01/1990",
         "date_ini": "10/05/1993",
         "email": "admin",
         "password": "admin",
-        "role": ["admin"]
+        "role": ["admin"],
+        "specialitation": ["pediatrica"],
+        "EAN": "1234567890123"
     },
     {
-        "id": 2,
+        "_id": 2,
         "name": "Aaron",
-        "date_ini": "04/08/2000",
+        "lastname": "Lopez",
+        "phone": "555-1234",
+        "direction": "Calle Falsa 123",
+        "birthday": "04/08/2000",
+        "date_ini": "04/08/2002",
         "email": "Aaron@gmail.es",
         "password": "prueba",
-        "role": ["employee"]
+        "role": ["employee"],
+        "specialitation": ["pediatrica"],
+        "EAN": "1234567890123"
     },
      {
-        "id": 3,
+        "_id": 3,
         "name": "Mario",
+        "lastname": "Gonzalez",
+        "phone": "555-5678",
+        "direction": "Calle Falsa 456",
+        "birthday": "04/08/2000",
         "date_ini": "04/08/2002",
         "email": "Mario@gmail.es",
         "password": "prueba",
-        "role": ["employee", "client"]
+        "role": ["employee", "client"],
+        "specialitation": ["neurologia"],
+        "EAN": "1234567890123"
     }
 
 ]

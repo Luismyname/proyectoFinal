@@ -45,7 +45,7 @@ function MostrarClientes(){
         let lista = ''
         AllClientes.forEach(cliente => {
             lista += `<div class="mvistas" id="vista-empleados">
-                        <img src="./imagen/${cliente.id}.png" class="logo" />
+                        <img src="./imagen/${cliente._id}.png" class="logo" />
                         <h3>Cliente: ${cliente.name}</h3>
                         <p>Email: ${cliente.email} </p>
                     </div>`

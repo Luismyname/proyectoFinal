@@ -130,3 +130,12 @@ nav {
   width: 100px;
   /* Tamaño horizontal fijo */
 }
+
+.formulario-empleado{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.formulario{
+  margin-left: 15%;
+}

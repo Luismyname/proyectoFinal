@@ -32,7 +32,7 @@ function createWindow(){
     });
 
     // Abre las herramientas de desarrollo de Chromium (DevTools)
-    //mainWindow.webContents.openDevTools()
+    mainWindow.webContents.openDevTools()
 }
 
 // Evento que se dispara cuando Electron ha terminado de inicializarse y está listo para crear ventanas

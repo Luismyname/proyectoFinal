@@ -45,7 +45,7 @@ function MostrarEmpleados(){
         AllEmpleados.forEach(empleado => {
             empleado.date_ini = new Date(empleado.date_ini);
             lista += `<div class="mvistas" id="vista-empleados">
-                        <img src="./imagen/${empleado.id}.png" class="logo" />
+                        <img src="./imagen/${empleado._id}.png" class="logo" />
                         <h3>Empleado: ${empleado.name}</h3>
                         <p>Fecha de inicio: ${empleado.date_ini.getDate()}/${empleado.date_ini.getMonth() + 1}/${empleado.date_ini.getFullYear()} </p>
                         <p>Email: ${empleado.email} </p>
@@ -65,24 +65,68 @@ let desplazar = document.getElementById('desplazar')
 nuevoEmpleado.addEventListener('click', ()=>{
     desplazar.innerHTML = `
     <form>
-        <fieldset>
+        <fieldset class="formulario-empleado">
             <legend>Informacion de empleado</legend>
-            <label for="name">Nombre completo:
-                <input type="text" id="name" name="name">
+            <div class="formulario">
+                <label for="name">Nombre:
+                    <input type="text" id="name" name="name">
+                </label>
+                <br/>
+                <label for="lastname">Apellidos:
+                    <input type="text" id="lastname" name="lastname">
+                </label>
+                <br/>
+                <label for="phone">Telefono:
+                    <input type="text" id="phone" name="phone">
+                </label>
+                <br/>
+                <label for="email">Email:
+                    <input type="email" id="email" name="email" maxlength="40">
+                </label>
+                <br/>
+                <label for="password">Contraseña:
+                    <input type="password" id="password" name="password">
+                </label>
+                <br/>
+            </div>
+            <div class="formulario">
+                <label for="birthday">Fecha de nacimiento:
+                    <input type="date" id="birthday" name="birthday">
+                </label>
+                <br/>
+                <label for="date_ini">Fecha de inicio:
+                    <input type="date" id="date_ini" name="date_ini">
+                </label>
+            <br/>
+                <label for="EAN">EAN:
+                    <input type="text" id="EAN" name="EAN">
+                </label>
+            </div>
+        </fieldset>
+    </form>
+    <form>
+        <fieldset class="formulario-empleado">
+            <legend>Direccion</legend>
+            <div class="formulario">
+                <label for="street">Calle:
+                    <input type="text" id="street" name="street">
+                </label>
+                <br/>
+                <label for="city">Ciudad:
+                <input type="text" id="city" name="city">
             </label>
             <br/>
-            <label for="password">Contraseña:
-            <input type="password" id="password" name="password">
+            </div>
+            <div class="formulario">
+            <label for="state">Estado:
+                <input type="text" id="state" name="state">
             </label>
             <br/>
-            <label for="date_ini">Fecha de inicio:
-            <input type="date" id="date_ini" name="date_ini">
+            <label for="zip">Codigo Postal:
+                <input type="text" id="zip" name="zip">
             </label>
             <br/>
-            <label for="email">Email:
-            <input type="email" id="email" name="email" maxlength="40">
-            </label>
-            <br/>
+            </div>
         </fieldset>
     </form>
         `

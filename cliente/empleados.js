@@ -55,8 +55,6 @@ function MostrarEmpleados(){
     })
 }
 
-MostrarEmpleados();
-
 //agregar empleados
 
 let nuevoEmpleado = document.getElementById('nuevo-empleado')
@@ -101,6 +99,22 @@ nuevoEmpleado.addEventListener('click', ()=>{
                 <label for="EAN">EAN:
                     <input type="text" id="EAN" name="EAN">
                 </label>
+                <br/>
+                <label for="specialitation">Especialidad:
+                    <select id="specialitation" name="specialitation">
+                        <option value="neurologia">Neurología</option>
+                        <option value="pediatrica">Pediátrica</option>
+                        <option value="geriatrica">Geriátrica</option>
+                        <option value="deportiva">Deportiva</option>
+                        <option value="respiratoria">Respiratoria</option>
+                        <option value="ginecologia">Ginecología</option>
+                        <option value="oncologia">Oncología</option>
+                        <option value="traumatologia">Traumatología</option>
+                        <option value="psiquiatrica">Psiquiátrica</option>
+                        <option value="estetica">Estética</option>
+                        <option value="paliativos">Paliativos</option>
+                    </select>
+                </label>
             </div>
         </fieldset>
     </form>
@@ -129,5 +143,55 @@ nuevoEmpleado.addEventListener('click', ()=>{
             </div>
         </fieldset>
     </form>
+    <button id="agregar-empleado">Agregar empleado</button>
         `
+
+    // Ahora que el botón existe, le agregas el event listener
+    let agregarEmpleado = document.getElementById('agregar-empleado');
+    agregarEmpleado.addEventListener('click', () => {
+        fetch(recurso + '/users')
+            .then(res => res.json())
+            .then(json => {
+                // Genera el nuevo _id como el máximo + 1
+                let allIds = json.map(u => u._id);
+                let newId = allIds.length > 0 ? Math.max(...allIds) + 1 : 1;
+
+                let newEmployee = {
+                    "_id": newId,
+                    "name": document.getElementById('name').value,
+                    "lastname": document.getElementById('lastname').value,
+                    "phone": document.getElementById('phone').value,
+                    "direction": `calle: ${document.getElementById('street').value} Estado:${document.getElementById('state').value} Ciudad:${document.getElementById('city').value} Codigo Postal:${document.getElementById('zip').value}`,
+                    "birthday": document.getElementById('birthday').value,
+                    "date_ini": document.getElementById('date_ini').value,
+                    "email": document.getElementById('email').value,
+                    "password": document.getElementById('password').value,
+                    "role": ["employee", "client"],
+                    "specialitation": [document.getElementById('specialitation').value],
+                    "EAN": document.getElementById('EAN').value
+                };
+
+                fetch(recurso + '/users', {
+                    method: 'POST',
+                    body: JSON.stringify(newEmployee),
+                    headers: {'Content-Type': 'application/json'}
+                })
+                .then(res => res.json())
+                .then(json => {
+                    console.log('Empleado agregado', json);
+                    alert('Empleado agregado correctamente');
+                    MostrarEmpleados();
+                    desplazar.innerHTML = '';
+                })
+                .catch(error => {
+                    console.error('Error al agregar empleado', error);
+                    alert('Error al agregar empleado');
+                });
+            });
+    });
 })
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    MostrarEmpleados();
+});

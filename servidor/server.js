@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 let app = express()
 const { usuario } = require('./usuarios/modelUsuario') //modelo de usuarios
 const mongoose = require('mongoose')
-const fs = require('fs')
+//const fs = require('fs')
 
 mongoose.Promise = global.Promise
 mongoose.connect('mongodb://localhost:27017/psioterapia')
@@ -179,12 +179,12 @@ app.delete('/users/:id', async (req, res)=>{
 
 
 
-let fichero = fs.readFileSync('./usuarios/usuarios.json')
+/*let fichero = fs.readFileSync('./usuarios/usuarios.json')
 let usuari = JSON.parse(fichero)
 
 usuario.insertMany(usuari)
     .then((docs) => {console.log('datos insertados correctamente:', docs) })
-    .catch((e)=>{ console.log('Error al insertar datos:', e)})
+    .catch((e)=>{ console.log('Error al insertar datos:', e)})*/
 
 
 app.listen(8080)

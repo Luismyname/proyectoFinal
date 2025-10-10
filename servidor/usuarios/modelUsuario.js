@@ -32,7 +32,6 @@ let usuarioSchema = new mongoose.Schema({
     },
     date_ini:{
         type: Date,
-        require:true
     },
     date_finish:{
         type: Date,
@@ -43,7 +42,6 @@ let usuarioSchema = new mongoose.Schema({
     },
     password:{
         type: String,
-        required: true
     },
     role:{
         type: [String],
@@ -57,7 +55,6 @@ let usuarioSchema = new mongoose.Schema({
     },
     EAN:{
         type: String,
-        require: true,
         minlength: 1
     }
 })

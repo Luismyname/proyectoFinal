@@ -1,6 +1,7 @@
 const { BrowserWindow } = require('@electron/remote')
 const fetch = require('node-fetch')
 const recurso = 'http://127.0.0.1:8080'
+const fs = require('fs');
 
 //boton que te lleva al menu principal
 
@@ -36,23 +37,44 @@ empleadoP.addEventListener('click', () => {
 
 let AllEmpleados = []
 
-function MostrarEmpleados(){
-    fetch(recurso + '/users4/'+'employee')
-    .then(res => res.json())
-    .then(json => {
-        AllEmpleados = json;
-        let lista = ''
-        AllEmpleados.forEach(empleado => {
-            empleado.date_ini = new Date(empleado.date_ini);
-            lista += `<div class="mvistas" id="vista-empleados">
-                        <img src="./imagen/${empleado._id}.png" class="logo" />
-                        <h3>Empleado: ${empleado.name}</h3>
-                        <p>Fecha de inicio: ${empleado.date_ini.getDate()}/${empleado.date_ini.getMonth() + 1}/${empleado.date_ini.getFullYear()} </p>
-                        <p>Email: ${empleado.email} </p>
-                    </div>`
-        })
-        document.getElementById('contenedor').innerHTML = lista;
-    })
+function MostrarEmpleados() {
+    fetch(recurso + '/users4/' + 'employee')
+        .then(res => res.json())
+        .then(json => {
+            AllEmpleados = json;
+            const contenedor = document.getElementById('contenedor');
+            contenedor.innerHTML = ''; // Limpiar contenido previo
+
+            AllEmpleados.forEach(empleado => {
+                empleado.date_ini = new Date(empleado.date_ini);
+
+                const div = document.createElement('div');
+                div.className = 'mvistas';
+                div.id = 'vista-empleados';
+
+                const img = document.createElement('img');
+                img.className = 'logo';
+                img.src = `./imagen/${empleado._id}.png`;
+                img.addEventListener('error', () => {
+                    img.src = './imagen/default.png';
+                });
+
+                const h3 = document.createElement('h3');
+                h3.textContent = `Empleado: ${empleado.name}`;
+
+                const pFecha = document.createElement('p');
+                pFecha.textContent = `Fecha de inicio: ${empleado.date_ini.getDate()}/${empleado.date_ini.getMonth() + 1}/${empleado.date_ini.getFullYear()}`;
+
+                const pEmail = document.createElement('p');
+                pEmail.textContent = `Email: ${empleado.email}`;
+
+                div.appendChild(img);
+                div.appendChild(h3);
+                div.appendChild(pFecha);
+                div.appendChild(pEmail);
+                contenedor.appendChild(div);
+            });
+        });
 }
 
 //agregar empleados
@@ -144,6 +166,7 @@ nuevoEmpleado.addEventListener('click', ()=>{
         </fieldset>
     </form>
     <button id="agregar-empleado">Agregar empleado</button>
+    <input type="file" accept="image/png" id="imagenEmpleado" />
         `
 
     // Ahora que el botón existe, le agregas el event listener
@@ -188,8 +211,25 @@ nuevoEmpleado.addEventListener('click', ()=>{
                     alert('Error al agregar empleado');
                 });
             });
+            let inputImagen = document.getElementById('imagenEmpleado');
+            inputImagen.addEventListener('change', (event) => {
+                fs.readFile(event.target.files[0].path, (err, data) => {
+                    if (err) {
+                        console.error('Error al leer la imagen', err);
+                        return;
+                    }else {
+                        fs.writeFile(`./imagen/${newId}.png`, data, (err) => {
+                            if (err) {
+                                console.error('Error al guardar la imagen', err);
+                            } else {
+                                console.log('Imagen guardada correctamente');
+                            }
+                        });
+                    }
+                });
+            });
     });
-})
+});
 
 
 document.addEventListener('DOMContentLoaded', () => {

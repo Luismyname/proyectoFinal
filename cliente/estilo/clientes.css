@@ -17,6 +17,11 @@ nav {
   width: 100vw;
 }
 
+#form-control {
+  margin-left: 35vw;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
 
 /* Contenedor interno con disposición en rejilla (grid) */
 #contenedor {
@@ -86,4 +91,17 @@ nav {
   transition: transform 0.3s ease; /* Suaviza cualquier transformación */
   height: 100px; /* Tamaño vertical fijo */
   width: 100px; /* Tamaño horizontal fijo */
+}
+
+.formulario-cliente{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.formulario{
+  margin-left: 15%;
+}
+
+#agregar-cliente{
+  margin: 3%;
 }

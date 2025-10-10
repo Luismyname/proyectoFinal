@@ -10,6 +10,12 @@ nav {
   width: 23.5vw;
 }
 
+#calendario-padre
+ç {
+  height: 100vh; /* Límite máximo de altura visible del contenedor */
+  width: 100vw;
+}
+
 #contenedor {
     display: grid;
     margin: 10px;

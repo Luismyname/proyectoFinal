@@ -12,13 +12,13 @@ paginaPrincipal.addEventListener('click', () => {
 
 let calendarioP = document.getElementById('calendario-principal')
 
-calendarioP.addEventListener('click', ()=>{
+calendarioP.addEventListener('click', () => {
     BrowserWindow.getFocusedWindow().loadFile('calendario.html')
 })
 
 let clienteP = document.getElementById('cliente-principal')
 
-clienteP.addEventListener('click', ()=>{
+clienteP.addEventListener('click', () => {
     BrowserWindow.getFocusedWindow().loadFile('clientes.html')
 })
 
@@ -68,7 +68,21 @@ function MostrarClientes() {
                 div.appendChild(p);
                 contenedor.appendChild(div);
             });
+            MostrarDetalle();
         });
+
+    function MostrarDetalle() {
+        let dettaleCliente = document.getElementsByClassName('mvistas');
+        for (let i = 0; i < dettaleCliente.length; i++) {
+            dettaleCliente[i].addEventListener('click', () => {
+                let clienteSeleccionado = AllClientes[i];
+                alert(`Nombre: ${clienteSeleccionado.name}\nApellidos: ${clienteSeleccionado.lastname}\nTelefono: ${clienteSeleccionado.phone}\nEmail: ${clienteSeleccionado.email}\nFecha de nacimiento: ${clienteSeleccionado.birthday}\nFecha de inicio: ${clienteSeleccionado.date_ini}\nDireccion: ${clienteSeleccionado.direction}\nEspecialidad: ${clienteSeleccionado.specialitation}\nEAN: ${clienteSeleccionado.EAN}`);
+            }
+            )
+        }
+    }
+
+
 }
 
 //agregar cliente
@@ -133,33 +147,33 @@ nuevoCliente.addEventListener('click', () => {
         <button id="agregar-cliente">Agregar cliente</button>
         <input type="file" accept="image/png" id="imagenCliente" />
             `
-    
-        // Ahora que el botón existe, le agregas el event listener
-        let agregarCliente = document.getElementById('agregar-cliente');
-        agregarCliente.addEventListener('click', () => {
-            fetch(recurso + '/users')
-                .then(res => res.json())
-                .then(json => {
-                    // Genera el nuevo _id como el máximo + 1
-                    let allIds = json.map(u => u._id);
-                    let newId = allIds.length > 0 ? Math.max(...allIds) + 1 : 1;
-    
-                    let newClient = {
-                        "_id": newId,
-                        "name": document.getElementById('name').value,
-                        "lastname": document.getElementById('lastname').value,
-                        "phone": document.getElementById('phone').value,
-                        "direction": `calle: ${document.getElementById('street').value} Estado:${document.getElementById('state').value} Ciudad:${document.getElementById('city').value} Codigo Postal:${document.getElementById('zip').value}`,
-                        "birthday": document.getElementById('birthday').value,
-                        "email": document.getElementById('email').value,
-                        "role": ["client"]
-                    };
-    
-                    fetch(recurso + '/users', {
-                        method: 'POST',
-                        body: JSON.stringify(newClient),
-                        headers: {'Content-Type': 'application/json'}
-                    })
+
+    // Ahora que el botón existe, le agregas el event listener
+    let agregarCliente = document.getElementById('agregar-cliente');
+    agregarCliente.addEventListener('click', () => {
+        fetch(recurso + '/users')
+            .then(res => res.json())
+            .then(json => {
+                // Genera el nuevo _id como el máximo + 1
+                let allIds = json.map(u => u._id);
+                let newId = allIds.length > 0 ? Math.max(...allIds) + 1 : 1;
+
+                let newClient = {
+                    "_id": newId,
+                    "name": document.getElementById('name').value,
+                    "lastname": document.getElementById('lastname').value,
+                    "phone": document.getElementById('phone').value,
+                    "direction": `calle: ${document.getElementById('street').value} Estado:${document.getElementById('state').value} Ciudad:${document.getElementById('city').value} Codigo Postal:${document.getElementById('zip').value}`,
+                    "birthday": document.getElementById('birthday').value,
+                    "email": document.getElementById('email').value,
+                    "role": ["client"]
+                };
+
+                fetch(recurso + '/users', {
+                    method: 'POST',
+                    body: JSON.stringify(newClient),
+                    headers: { 'Content-Type': 'application/json' }
+                })
                     .then(res => res.json())
                     .then(json => {
                         console.log('Cliente agregado', json);
@@ -171,25 +185,25 @@ nuevoCliente.addEventListener('click', () => {
                         console.error('Error al agregar cliente', error);
                         alert('Error al agregar cliente');
                     });
-                });
-                let inputImagen = document.getElementById('imagenCliente');
-                inputImagen.addEventListener('change', (event) => {
-                    fs.readFile(event.target.files[0].path, (err, data) => {
+            });
+        let inputImagen = document.getElementById('imagenCliente');
+        inputImagen.addEventListener('change', (event) => {
+            fs.readFile(event.target.files[0].path, (err, data) => {
+                if (err) {
+                    console.error('Error al leer la imagen', err);
+                    return;
+                } else {
+                    fs.writeFile(`./imagen/${newId}.png`, data, (err) => {
                         if (err) {
-                            console.error('Error al leer la imagen', err);
-                            return;
-                        }else {
-                            fs.writeFile(`./imagen/${newId}.png`, data, (err) => {
-                                if (err) {
-                                    console.error('Error al guardar la imagen', err);
-                                } else {
-                                    console.log('Imagen guardada correctamente');
-                                }
-                            });
+                            console.error('Error al guardar la imagen', err);
+                        } else {
+                            console.log('Imagen guardada correctamente');
                         }
                     });
-                });
+                }
+            });
         });
     });
+});
 
 MostrarClientes();

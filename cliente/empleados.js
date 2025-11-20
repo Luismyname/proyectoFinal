@@ -2,6 +2,7 @@ const { BrowserWindow } = require('@electron/remote')
 const fetch = require('node-fetch')
 const recurso = 'http://127.0.0.1:8080'
 const fs = require('fs');
+const { get } = require('http');
 
 //boton que te lleva al menu principal
 
@@ -13,13 +14,13 @@ paginaPrincipal.addEventListener('click', () => {
 
 let clienteP = document.getElementById('cliente-principal')
 
-clienteP.addEventListener('click', ()=>{
+clienteP.addEventListener('click', () => {
     BrowserWindow.getFocusedWindow().loadFile('clientes.html')
 })
 
 let calendarioP = document.getElementById('calendario-principal')
 
-calendarioP.addEventListener('click', ()=>{
+calendarioP.addEventListener('click', () => {
     BrowserWindow.getFocusedWindow().loadFile('calendario.html')
 })
 
@@ -50,7 +51,6 @@ function MostrarEmpleados() {
 
                 const div = document.createElement('div');
                 div.className = 'mvistas';
-                div.id = 'vista-empleados';
 
                 const img = document.createElement('img');
                 img.className = 'logo';
@@ -74,7 +74,21 @@ function MostrarEmpleados() {
                 div.appendChild(pEmail);
                 contenedor.appendChild(div);
             });
+            MostrarDetalle();
         });
+
+    function MostrarDetalle() {
+        let dettaleEmpleado = document.getElementsByClassName('mvistas');
+        for (let i = 0; i < dettaleEmpleado.length; i++) {
+            dettaleEmpleado[i].addEventListener('click', () => {
+                let empleadoSeleccionado = AllEmpleados[i];
+                alert(`Nombre: ${empleadoSeleccionado.name}\nApellidos: ${empleadoSeleccionado.lastname}\nTelefono: ${empleadoSeleccionado.phone}\nEmail: ${empleadoSeleccionado.email}\nFecha de nacimiento: ${empleadoSeleccionado.birthday}\nFecha de inicio: ${empleadoSeleccionado.date_ini}\nDireccion: ${empleadoSeleccionado.direction}\nEspecialidad: ${empleadoSeleccionado.specialitation}\nEAN: ${empleadoSeleccionado.EAN}`);
+            }
+            )
+        }
+    }
+
+
 }
 
 //agregar empleados
@@ -82,7 +96,7 @@ function MostrarEmpleados() {
 let nuevoEmpleado = document.getElementById('nuevo-empleado')
 let desplazar = document.getElementById('desplazar')
 
-nuevoEmpleado.addEventListener('click', ()=>{
+nuevoEmpleado.addEventListener('click', () => {
     desplazar.innerHTML = `
     <form>
         <fieldset class="formulario-empleado">
@@ -197,39 +211,44 @@ nuevoEmpleado.addEventListener('click', ()=>{
                 fetch(recurso + '/users', {
                     method: 'POST',
                     body: JSON.stringify(newEmployee),
-                    headers: {'Content-Type': 'application/json'}
+                    headers: { 'Content-Type': 'application/json' }
                 })
-                .then(res => res.json())
-                .then(json => {
-                    console.log('Empleado agregado', json);
-                    alert('Empleado agregado correctamente');
-                    MostrarEmpleados();
-                    desplazar.innerHTML = '';
-                })
-                .catch(error => {
-                    console.error('Error al agregar empleado', error);
-                    alert('Error al agregar empleado');
-                });
+                    .then(res => res.json())
+                    .then(json => {
+                        console.log('Empleado agregado', json);
+                        alert('Empleado agregado correctamente');
+                        MostrarEmpleados();
+                        desplazar.innerHTML = '';
+                    })
+                    .catch(error => {
+                        console.error('Error al agregar empleado', error);
+                        alert('Error al agregar empleado');
+                    });
             });
-            let inputImagen = document.getElementById('imagenEmpleado');
-            inputImagen.addEventListener('change', (event) => {
-                fs.readFile(event.target.files[0].path, (err, data) => {
-                    if (err) {
-                        console.error('Error al leer la imagen', err);
-                        return;
-                    }else {
-                        fs.writeFile(`./imagen/${newId}.png`, data, (err) => {
-                            if (err) {
-                                console.error('Error al guardar la imagen', err);
-                            } else {
-                                console.log('Imagen guardada correctamente');
-                            }
-                        });
-                    }
-                });
+        let inputImagen = document.getElementById('imagenEmpleado');
+        inputImagen.addEventListener('change', (event) => {
+            fs.readFile(event.target.files[0].path, (err, data) => {
+                if (err) {
+                    console.error('Error al leer la imagen', err);
+                    return;
+                } else {
+                    fs.writeFile(`./imagen/${newId}.png`, data, (err) => {
+                        if (err) {
+                            console.error('Error al guardar la imagen', err);
+                        } else {
+                            console.log('Imagen guardada correctamente');
+                        }
+                    });
+                }
             });
+        });
     });
 });
+
+//click para cada empleado y ver su informacion detallada
+
+//let fichas = getElementsByClassName('mvistas');
+
 
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -2,59 +2,74 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self';">
-    <title>Document</title>
-    <link rel="stylesheet" href="./photon-0.1.2-alpha/dist/css/photon.min.css">
-    <link rel="stylesheet" href="./estilo/calendario.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSP corregida -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self';
+                 script-src 'self';
+                 style-src 'self' 'unsafe-inline';
+                 font-src 'self' data:;">
+
+  <title>Calendario</title>
+
+  <!-- Photon CSS -->
+  <link rel="stylesheet" href="./photon-0.1.2-alpha/dist/css/photon.min.css">
+
+  <!-- Tus estilos personalizados -->
+  <link rel="stylesheet" href="./estilo/calendario.css">
 </head>
 
 <body>
-    <div class="window">
+  <div class="window">
 
-        <header class="toolbar toolbar-header">
-            <h1 class="title">Header with actions</h1>
-        </header>
-        <div class="window-content">
+    <header class="toolbar toolbar-header">
+      <h1 class="title">Gestor de citas</h1>
+    </header>
 
-            <nav class="nav-group">
-                <h5 class="nav-group-title">Navegador</h5>
-                <span class="nav-group-item" id="pagina-principal">
-                    <span class="icon icon-home"></span>
-                    Pagina principal
-                </span>
-                <span class="nav-group-item" id="empleado-principal">
-                    <span class="icon icon-user"></span>
-                    Empleados
-                </span> 
-                <span class="nav-group-item" id="cliente-principal">
-                    <span class="icon icon-users"></span>
-                    Clientes
-                </span>
-                <span class="nav-group-item" id="calendario-principal">
-                    <span class="icon icon-calendar"></span>
-                    calendario
-                </span>
-                <span class="nav-group-item" id="pagos-principal">
-                    <span class="icon icon-credit-card"></span>
-                    Pagos
-                </span>
-            </nav>
+    <div class="window-content">
 
-            <div id="calendario-padre">
-                <div id="calendario-hijo"></div>
-            </div>
+      <nav class="nav-group">
+        <h5 class="nav-group-title">Navegador</h5>
+        <span class="nav-group-item" id="pagina-principal">
+          <span class="icon icon-home"></span>
+          Página principal
+        </span>
+        <span class="nav-group-item" id="empleado-principal">
+          <span class="icon icon-user"></span>
+          Empleados
+        </span>
+        <span class="nav-group-item" id="cliente-principal">
+          <span class="icon icon-users"></span>
+          Clientes
+        </span>
+        <span class="nav-group-item" id="calendario-principal">
+          <span class="icon icon-calendar"></span>
+          Calendario
+        </span>
+        <span class="nav-group-item" id="pagos-principal">
+          <span class="icon icon-credit-card"></span>
+          Pagos
+        </span>
+      </nav>
 
-        </div>
-        <footer class="toolbar toolbar-footer">
-            <div class="toolbar-actions">
-
-            </div>
-        </footer>
+      <div id="calendario-padre">
+        <div id="calendar"></div>
+      </div>
 
     </div>
-    <script src="calendario.js"></script>
+
+    <footer class="toolbar toolbar-footer">
+      <div class="toolbar-actions">
+        <!-- Aquí puedes añadir botones de acción -->
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Tu script de calendario -->
+  <script src="calendario.js"></script>
 </body>
 
 </html>

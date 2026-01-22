@@ -143,3 +143,27 @@ nav {
 #agregar-empleado{
   margin: 3%;
 }
+
+/* Estilos para el botón Cerrar Sesión */
+#btn-cerrar-sesion.btn-cerrar-sesion {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background-color 0.2s ease-in-out;
+    margin-left: auto;
+}
+
+#btn-cerrar-sesion.btn-cerrar-sesion:hover {
+    background-color: #c82333;
+}
+
+#btn-cerrar-sesion.btn-cerrar-sesion:active {
+    background-color: #bd2130;
+}

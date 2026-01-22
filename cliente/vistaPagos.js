@@ -7,26 +7,26 @@ const recurso = 'http://127.0.0.1:8080'
 let paginaPrincipal = document.getElementById('pagina-principal')
 
 paginaPrincipal.addEventListener('click', () => {
-    BrowserWindow.getFocusedWindow().loadFile('admin.html');
+    BrowserWindow.getFocusedWindow().loadFile('employee.html');
 });
 
 let clienteP = document.getElementById('cliente-principal')
 
 clienteP.addEventListener('click', ()=>{
-    BrowserWindow.getFocusedWindow().loadFile('clientes.html')
+    BrowserWindow.getFocusedWindow().loadFile('vistaClientes.html')
 })
 
 let empleadoP = document.getElementById('empleado-principal');
 
 empleadoP.addEventListener('click', () => {
-    BrowserWindow.getFocusedWindow().loadFile('empleados.html');
+    BrowserWindow.getFocusedWindow().loadFile('vistaEmpleados.html');
 });
 
 
 let calendarioP = document.getElementById('calendario-principal')
 
 calendarioP.addEventListener('click', ()=>{
-    BrowserWindow.getFocusedWindow().loadFile('calendario.html')
+    BrowserWindow.getFocusedWindow().loadFile('vistaCalendario.html')
 })
 
 // Botón cerrar sesión

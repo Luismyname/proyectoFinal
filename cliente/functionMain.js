@@ -13,7 +13,7 @@ let comprobar = (usua, pass, encontrado) => {
         return;
     }
 
-    const usuario = encontrado[0]; // 👈 tomamos directamente el primer (y único) elemento
+    const usuario = encontrado[0]; // tomamos directamente el primer (y único) elemento
 
     if (usuario.email === usua && usuario.password === pass && usuario.role.includes('admin')) {
         BrowserWindow.getFocusedWindow().loadFile('admin.html');

@@ -79,7 +79,7 @@ viewempleados.addEventListener('click', () => {
 
 
 empleadoP.addEventListener('click', () => {
-    BrowserWindow.getFocusedWindow().loadFile('empleados.html');
+    BrowserWindow.getFocusedWindow().loadFile('vistaEmpleados.html');
 });
 
 //conteo de empleados
@@ -107,7 +107,7 @@ contarEmpleados(); // Llamada inicial para contar empleados al cargar el script
 
 //navegacion a paginas de clientes
 viewClientes.addEventListener('click',()=>{
-    BrowserWindow.getFocusedWindow().loadFile('clientes.html');
+    BrowserWindow.getFocusedWindow().loadFile('vistaClientes.html');
 });
 
 clienteV.addEventListener('click', () => {
@@ -250,26 +250,20 @@ paginaPrincipal.addEventListener('click', () => {
 let calendarioP = document.getElementById('calendario-principal')
 
 calendarioP.addEventListener('click', ()=>{
-    BrowserWindow.getFocusedWindow().loadFile('calendario.html')
+    BrowserWindow.getFocusedWindow().loadFile('vistaCalendario.html')
 })
 
 
 let pagosP = document.getElementById('pagos-principal')
 
 pagosP.addEventListener('click', () => {
-    BrowserWindow.getFocusedWindow().loadFile('pagos.html');
+    BrowserWindow.getFocusedWindow().loadFile('vistaPagos.html');
 });
-
-let empleadosP = document.getElementById('empleado-principal')
-
-empleadoP.addEventListener('click', ()=>{
-    BrowserWindow.getFocusedWindow().loadFile('empleados.html');
-})
 
 let clientesP = document.getElementById('cliente-principal')
 
 clientesP.addEventListener('click', ()=>{
-    BrowserWindow.getFocusedWindow().loadFile('clientes.html');
+    BrowserWindow.getFocusedWindow().loadFile('vistaClientes.html');
 })
 
 // Botón cerrar sesión

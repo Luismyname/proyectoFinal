@@ -277,3 +277,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// Botón cerrar sesión
+let btnCerrarSesion = document.getElementById('btn-cerrar-sesion')
+
+btnCerrarSesion.addEventListener('click', () => {
+    BrowserWindow.getFocusedWindow().loadFile('index.html');
+})

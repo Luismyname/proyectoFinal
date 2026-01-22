@@ -337,16 +337,16 @@ async function deleteAppointment(citaId) {
 
 // navegación entre páginas — comprueba existencia antes de añadir listener
 const elPagina = document.getElementById('pagina-principal');
-if (elPagina) elPagina.addEventListener('click', () => BrowserWindow.getFocusedWindow().loadFile('admin.html'));
+if (elPagina) elPagina.addEventListener('click', () => BrowserWindow.getFocusedWindow().loadFile('employee.html'));
 
 const elCliente = document.getElementById('cliente-principal');
-if (elCliente) elCliente.addEventListener('click', () => BrowserWindow.getFocusedWindow().loadFile('clientes.html'));
+if (elCliente) elCliente.addEventListener('click', () => BrowserWindow.getFocusedWindow().loadFile('vistaClientes.html'));
 
 const elEmpleado = document.getElementById('empleado-principal');
-if (elEmpleado) elEmpleado.addEventListener('click', () => BrowserWindow.getFocusedWindow().loadFile('empleados.html'));
+if (elEmpleado) elEmpleado.addEventListener('click', () => BrowserWindow.getFocusedWindow().loadFile('vistaEmpleados.html'));
 
 const elPagos = document.getElementById('pagos-principal');
-if (elPagos) elPagos.addEventListener('click', () => BrowserWindow.getFocusedWindow().loadFile('pagos.html'));
+if (elPagos) elPagos.addEventListener('click', () => BrowserWindow.getFocusedWindow().loadFile('vistaPagos.html'));
 
 // Botón para gestionar/eliminar citas (opcional, si añades un botón en el HTML)
 const btnGestionarCitas = document.getElementById('gestionar-citas-btn');
